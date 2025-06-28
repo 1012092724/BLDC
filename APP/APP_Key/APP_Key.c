@@ -1,11 +1,8 @@
 #include "APP_Key.h"
-#include "Int_EEPROM.h"
-#include "Int_oled.h"
+#include "APP_BLDC.h"
+#include "APP_Display.h"
 
 uint8_t key_value = 0;
-extern uint8_t page_flag;
-extern uint8_t machine_id;
-extern int16_t set_nums;
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -35,39 +32,36 @@ void APP_Key_Process(void)
     switch (key_value) {
         case 1:
             debug_printfln("KEY_1");
+            if (bldc_status == 0) {
+                APP_BLDC_Start();
+            } else if (bldc_status == 1) {
+                APP_BLDC_Stop();
+            }
             break;
         case 2:
             debug_printfln("KEY_2");
             if (page_flag == 1) {
-                // id+1
-                machine_id++;
-                if (machine_id > 99) {
-                    machine_id = 99;
-                }
-                // 存储ID
-                Int_EEPROM_Write(0x01, machine_id);
+                APP_BLDC_ID_Add(); // ID ++
             } else {
                 // 转速增加
                 set_nums += 50;
                 if (set_nums > 600) {
                     set_nums = 600;
                 }
+                APP_BLDC_Control(set_nums);
             }
             break;
         case 3:
             debug_printfln("KEY_3");
             if (page_flag == 1) {
-                machine_id--;
-                if (machine_id < 1) {
-                    machine_id = 1;
-                }
-                Int_EEPROM_Write(0x01, machine_id);
+                APP_BLDC_ID_Sub(); // ID --
             } else {
                 // 转速降低
                 set_nums -= 50;
                 if (set_nums < -600) {
                     set_nums = -600;
                 }
+                APP_BLDC_Control(set_nums);
             }
             break;
         case 4: // 切换页面

@@ -1,5 +1,5 @@
 #include "APP_Display.h"
-#include "Int_EEPROM.h"
+#include "APP_BLDC.h"
 /**
  * 展示页面0:
  *  第一行:    尚硅谷电机项目
@@ -8,29 +8,9 @@
  * 展示页面1:
  *     modbus_RS485 从设备的ID
  */
-uint8_t page_flag  = 0;
-uint8_t machine_id = 1;
-int16_t set_nums   = 0;
-
+uint8_t page_flag      = 0;
+int16_t set_nums       = 0;
 uint16_t encoder_speed = 0;
-
-/**
- * @brief 电机ID的初始化
- *
- */
-void APP_ID_Init(void)
-{
-    // ID值存储在0x01位置 => 把0x00 => 188
-    // 初始化之后,先读取0x00位置的值 判断当前是否是之前存储的id值
-    uint8_t tmp = Int_EEPROM_Read(0x00);
-    if (tmp == 188) {
-        machine_id = Int_EEPROM_Read(0x01);
-    } else {
-        // 之前没有存储过ID值,则存储
-        Int_EEPROM_Write(0x00, 188);
-        Int_EEPROM_Write(0x01, machine_id);
-    }
-}
 
 /**
  * @brief 初始化OLED屏幕
@@ -104,7 +84,7 @@ void APP_Display_Show(void)
             // 1. 展示 ID标识
             Int_OLED_ShowString(30, 16, "ID:", 16, 1);
             // 2. 展示ID值
-            Int_OLED_ShowNum(58, 16, machine_id, 2, 16, 1);
+            Int_OLED_ShowNum(58, 16, bldc_id, 2, 16, 1);
             break;
         default:
             break;
