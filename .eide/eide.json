@@ -296,7 +296,8 @@
         "libList": [],
         "defineList": [
           "USE_HAL_DRIVER",
-          "STM32F103xE"
+          "STM32F103xE",
+          "NDEBUG"
         ]
       },
       "builderOptions": {

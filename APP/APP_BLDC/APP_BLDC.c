@@ -10,7 +10,7 @@ void APP_BLDC_Init(void)
     // 初始化ID
     APP_BLDC_ID_Init();
     // 初始化PID参数
-    Com_PID_Init(&pid, 0.03, 0.005, 0.0);
+    Com_PID_Init(&pid, 0.015, 0.03, 0.0);
 }
 
 void APP_BLDC_Speed_Update()
@@ -73,9 +73,8 @@ void HAL_IncTick(void)
         if (uwTick - last_PID_time >= 50) {
             last_PID_time = uwTick;
             encoder_speed = (540000.0 / hall_count_final);
-            printf("%d,%d,%d\n", target_speed, (uint16_t)pid.output, encoder_speed);
-            pid.error = abs(target_speed) - encoder_speed;
-            Com_PID_Update(&pid);
+            // printf("%d,%d,%d\n", target_speed, (uint16_t)pid.output, encoder_speed);
+            Com_PID_Update(&pid, abs(target_speed) - encoder_speed);
             // // 限制PID计算结果的上下限
             if (pid.output > 1000) {
                 pid.output = 1000;

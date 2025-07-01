@@ -25,7 +25,7 @@ void Com_PID_Init(PID_Struct *pid, float kp, float ki, float kd)
     // 初始化误差累加和为0
     pid->error_sum = 0;
     // 初始化输出为0
-    pid->output = 50;
+    pid->output = 60;
 }
 
 void Com_PID_Rest(PID_Struct *pid)
@@ -39,14 +39,15 @@ void Com_PID_Rest(PID_Struct *pid)
     // 初始化输出为0
     pid->output = 50;
 }
-void Com_PID_Update(PID_Struct *pid)
+void Com_PID_Update(PID_Struct *pid, int16_t error)
 {
+
+    pid->error = error;
 
     // 首次修改上一次的误差值
     if (pid->error_last == 0) {
         pid->error_last = pid->error;
     }
-
     // 计算误差积分
     pid->error_sum += pid->error;
 

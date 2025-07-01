@@ -16,6 +16,6 @@ void Com_PID_Init(PID_Struct *pid, float kp, float ki, float kd);
 
 void Com_PID_Rest(PID_Struct *pid);
 
-void Com_PID_Update(PID_Struct *pid);
+void Com_PID_Update(PID_Struct *pid, int16_t error);
 
 #endif /* __COM_PID_H__ */
