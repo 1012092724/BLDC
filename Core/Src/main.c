@@ -98,7 +98,7 @@ int main(void)
     /* USER CODE BEGIN 2 */
     debug_printfln(">>>>>>>>>>>>>>>>>>>>>>>>> BLCD <<<<<<<<<<<<<<<<<<<<<<<<<");
     APP_Display_Init();
-    APP_BLDC_ID_Init();
+    APP_BLDC_Init();
     /* USER CODE END 2 */
 
     /* Infinite loop */
@@ -106,7 +106,7 @@ int main(void)
     while (1) {
         APP_Key_Process();
         APP_Display_Show();
-        printf("%.2f\n", BLDC_SPEED);
+
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */

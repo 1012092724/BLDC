@@ -12,6 +12,8 @@ uint8_t step_count        = 0;
 // 计算电机转速需要的变量
 uint8_t current_hall_status = 0;
 uint8_t last_hall_status    = 0;
+
+#define LIMIT(x, min, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
 void Int_BLDC_Start(void)
 {
     // 1. 控制驱动芯片引脚 YC_SD
@@ -80,20 +82,15 @@ uint8_t Int_BLDC_GetHall(void)
     return hall_status;
 }
 
-/**
- * @brief 控制电机
- *
- * @param set_nums  绝对值是占空比  正负表示正反转
- */
-void Int_BLDC_Control(int16_t set_nums)
+void Int_BLDC_Control(uint8_t dir, uint16_t target_speed)
 {
-    if (set_nums >= 0) {
-        bldc_dir  = 0;
-        dutyCycle = set_nums;
+    if (dir == 0) {
+        bldc_dir = 0;
     } else {
-        bldc_dir  = 1;
-        dutyCycle = -set_nums;
+        bldc_dir = 1;
     }
+    // printf("BLDC_Control: %d %d\n", dir, target_speed);
+    dutyCycle = target_speed;
 }
 
 /**

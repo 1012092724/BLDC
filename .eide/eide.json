@@ -1,5 +1,5 @@
 {
-  "name": "BLDC",
+  "name": "FOC_BLDC",
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [

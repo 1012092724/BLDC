@@ -6,9 +6,9 @@
 #include <stdarg.h>
 #include <string.h>
 
-#define DEBUG_ENABLE
+#define DEBUG_ENABLE 0
 
-#ifdef DEBUG_ENABLE
+#if DEBUG_ENABLE
 // 替换__FILE__ 只保留文件名称  取出路径名称
 // FILE__NAME => 去除\\的路径名称
 #define FILE__NAME (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)

@@ -44,11 +44,11 @@ void APP_Key_Process(void)
                 APP_BLDC_ID_Add(); // ID ++
             } else {
                 // 转速增加
-                set_nums += 50;
-                if (set_nums > 600) {
-                    set_nums = 600;
+                target_speed += 50;
+                if (target_speed >= 4000) {
+                    target_speed = 4000;
                 }
-                APP_BLDC_Control(set_nums);
+                APP_BLDC_Speed_Update(target_speed);
             }
             break;
         case 3:
@@ -57,11 +57,11 @@ void APP_Key_Process(void)
                 APP_BLDC_ID_Sub(); // ID --
             } else {
                 // 转速降低
-                set_nums -= 50;
-                if (set_nums < -600) {
-                    set_nums = -600;
+                target_speed -= 50;
+                if (target_speed <= -2000) {
+                    target_speed = -2000;
                 }
-                APP_BLDC_Control(set_nums);
+                APP_BLDC_Speed_Update(target_speed);
             }
             break;
         case 4: // 切换页面
