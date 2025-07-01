@@ -57,32 +57,32 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define YC_SD_Pin        GPIO_PIN_13
-#define YC_SD_GPIO_Port  GPIOC
-#define HALL_U_Pin       GPIO_PIN_0
+#define YC_SD_Pin GPIO_PIN_13
+#define YC_SD_GPIO_Port GPIOC
+#define HALL_U_Pin GPIO_PIN_0
 #define HALL_U_GPIO_Port GPIOA
-#define HALL_V_Pin       GPIO_PIN_1
+#define HALL_V_Pin GPIO_PIN_1
 #define HALL_V_GPIO_Port GPIOA
-#define HALL_W_Pin       GPIO_PIN_2
+#define HALL_W_Pin GPIO_PIN_2
 #define HALL_W_GPIO_Port GPIOA
-#define U_L_Pin          GPIO_PIN_7
-#define U_L_GPIO_Port    GPIOA
-#define V_L_Pin          GPIO_PIN_0
-#define V_L_GPIO_Port    GPIOB
-#define W_L_Pin          GPIO_PIN_1
-#define W_L_GPIO_Port    GPIOB
-#define KEY_4_Pin        GPIO_PIN_2
-#define KEY_4_GPIO_Port  GPIOD
-#define KEY_4_EXTI_IRQn  EXTI2_IRQn
-#define KEY_3_Pin        GPIO_PIN_3
-#define KEY_3_GPIO_Port  GPIOB
-#define KEY_3_EXTI_IRQn  EXTI3_IRQn
-#define KEY_2_Pin        GPIO_PIN_4
-#define KEY_2_GPIO_Port  GPIOB
-#define KEY_2_EXTI_IRQn  EXTI4_IRQn
-#define KEY_1_Pin        GPIO_PIN_5
-#define KEY_1_GPIO_Port  GPIOB
-#define KEY_1_EXTI_IRQn  EXTI9_5_IRQn
+#define U_L_Pin GPIO_PIN_7
+#define U_L_GPIO_Port GPIOA
+#define V_L_Pin GPIO_PIN_0
+#define V_L_GPIO_Port GPIOB
+#define W_L_Pin GPIO_PIN_1
+#define W_L_GPIO_Port GPIOB
+#define KEY_4_Pin GPIO_PIN_2
+#define KEY_4_GPIO_Port GPIOD
+#define KEY_4_EXTI_IRQn EXTI2_IRQn
+#define KEY_3_Pin GPIO_PIN_3
+#define KEY_3_GPIO_Port GPIOB
+#define KEY_3_EXTI_IRQn EXTI3_IRQn
+#define KEY_2_Pin GPIO_PIN_4
+#define KEY_2_GPIO_Port GPIOB
+#define KEY_2_EXTI_IRQn EXTI4_IRQn
+#define KEY_1_Pin GPIO_PIN_5
+#define KEY_1_GPIO_Port GPIOB
+#define KEY_1_EXTI_IRQn EXTI9_5_IRQn
 
 /* USER CODE BEGIN Private defines */
 

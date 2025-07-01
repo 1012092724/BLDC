@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'BLDC' 
- * Target:  'BLDC' 
+ * Project: 'FOC_BLDC' 
+ * Target:  'FOC_BLDC' 
  */
 
 #ifndef RTE_COMPONENTS_H
