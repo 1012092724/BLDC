@@ -1,6 +1,4 @@
 #include "APP_Key.h"
-#include "APP_BLDC.h"
-#include "APP_Display.h"
 
 uint8_t key_value = 0;
 
@@ -45,10 +43,9 @@ void APP_Key_Process(void)
             } else {
                 // 转速增加
                 target_speed += 50;
-                if (target_speed >= 4000) {
-                    target_speed = 4000;
+                if (target_speed >= 2000) {
+                    target_speed = 2000;
                 }
-                APP_BLDC_Speed_Update(target_speed);
             }
             break;
         case 3:
@@ -61,7 +58,6 @@ void APP_Key_Process(void)
                 if (target_speed <= -2000) {
                     target_speed = -2000;
                 }
-                APP_BLDC_Speed_Update(target_speed);
             }
             break;
         case 4: // 切换页面
@@ -74,5 +70,8 @@ void APP_Key_Process(void)
         default:
             break;
     }
+
+    APP_Modbus_Msg_Update(key_value);
+
     key_value = 0;
 }

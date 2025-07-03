@@ -6,8 +6,10 @@
 #include "Int_EEPROM.h"
 #include "Com_PID.h"
 
+extern int8_t target_dir;
 extern int16_t target_speed;
 extern uint8_t bldc_id;
+extern uint16_t bldc_speed;
 
 void APP_BLDC_Init(void);
 

@@ -3,8 +3,9 @@
 
 uint8_t bldc_id = 1;
 PID_Struct pid;
-int16_t target_speed   = 0;
-uint16_t encoder_speed = 0;
+int16_t target_speed = 0;
+int8_t target_dir    = 0;
+uint16_t bldc_speed  = 0;
 void APP_BLDC_Init(void)
 {
     // 初始化ID
@@ -16,10 +17,11 @@ void APP_BLDC_Init(void)
 void APP_BLDC_Speed_Update()
 {
     if (target_speed >= 0) {
-        Int_BLDC_Control(0, (uint16_t)pid.output);
+        target_dir = 1;
     } else {
-        Int_BLDC_Control(1, (uint16_t)pid.output);
+        target_dir = 0;
     }
+    Int_BLDC_Control(target_dir, (uint16_t)pid.output);
 }
 
 void APP_BLDC_Start(void)
@@ -29,6 +31,7 @@ void APP_BLDC_Start(void)
 }
 void APP_BLDC_Stop(void)
 {
+    bldc_speed = 0;
     Int_BLDC_Stop();
     Com_PID_Rest(&pid);
 }
@@ -72,9 +75,9 @@ void HAL_IncTick(void)
     if (bldc_status == 1) {
         if (uwTick - last_PID_time >= 50) {
             last_PID_time = uwTick;
-            encoder_speed = (540000.0 / hall_count_final);
-            // printf("%d,%d,%d\n", target_speed, (uint16_t)pid.output, encoder_speed);
-            Com_PID_Update(&pid, abs(target_speed) - encoder_speed);
+            bldc_speed    = (540000.0 / hall_count_final);
+            // printf("%d,%d,%d\n", target_speed, (uint16_t)pid.output, bldc_speed);
+            Com_PID_Update(&pid, abs(target_speed) - bldc_speed);
             // // 限制PID计算结果的上下限
             if (pid.output > 1000) {
                 pid.output = 1000;

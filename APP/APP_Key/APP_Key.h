@@ -3,6 +3,9 @@
 
 #include "Com_Debug.h"
 #include "main.h"
+#include "APP_BLDC.h"
+#include "APP_Display.h"
+#include "APP_Modbus.h"
 
 void APP_Key_Process(void);
 

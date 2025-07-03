@@ -29,6 +29,7 @@
 #include "APP_Key.h"
 #include "APP_Display.h"
 #include "APP_BLDC.h"
+#include "APP_Modbus.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,6 +102,10 @@ int main(void)
     debug_printfln(">>>>>>>>>>>>>>>>>>>>>>>>> BLCD <<<<<<<<<<<<<<<<<<<<<<<<<");
     APP_Display_Init();
     APP_BLDC_Init();
+
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 启动 Modbus <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    APP_Modbus_Start(bldc_id);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,7 +113,7 @@ int main(void)
     while (1) {
         APP_Key_Process();
         APP_Display_Show();
-
+        APP_Modbus_Process();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

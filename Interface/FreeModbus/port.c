@@ -2,16 +2,16 @@
 #include "mbport.h"
 
 // 声明输入寄存器缓冲区，用于存储十路输入寄存器的值
-uint16_t REG_INPUT_BUF[REG_INPUT_SIZE];
+uint16_t REG_INPUT_BUF[REG_INPUT_SIZE] = {1, 2, 3, 4, 5, 0, 0, 0, 0,0};
 
 // 声明保持寄存器缓冲区，用于存储十路保持寄存器的值
-uint16_t REG_HOLD_BUF[REG_HOLD_SIZE];
+uint16_t REG_HOLD_BUF[REG_HOLD_SIZE] = {1, 2, 3, 4, 5, 0, 0, 0, 0, 0};
 
 // 定义十路线圈的大小
-uint8_t REG_COILS_BUF[REG_COILS_SIZE] = {1, 1, 1, 1, 0, 1, 1, 1, 1, 1};
+uint8_t REG_COILS_BUF[REG_COILS_SIZE] = {1, 2, 3, 4, 5, 0, 0, 0, 0, 0};
 
 // 声明离散量缓冲区，并初始化，用于存储十路离散量的状态
-uint8_t REG_DISC_BUF[REG_DISC_SIZE] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+uint8_t REG_DISC_BUF[REG_DISC_SIZE] = {1, 2, 3, 4, 5, 0, 0, 0, 0, 0};
 
 /**
  * @brief CMD4命令处理回调函数

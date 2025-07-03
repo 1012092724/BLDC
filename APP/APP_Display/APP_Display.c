@@ -50,7 +50,7 @@ void APP_Display_Show(void)
     //     }
     //     // 4. 显示编码器测量的速度值
     //     Int_OLED_ShowString(0, 32, "speed:", 16, 1);
-    //     Int_OLED_ShowNum(83, 32, encoder_speed, 4, 16, 1);
+    //     Int_OLED_ShowNum(83, 32, bldc_speed, 4, 16, 1);
     // }
 
     switch (page_flag) {
@@ -75,7 +75,7 @@ void APP_Display_Show(void)
 
             // 4. 显示编码器测量的速度值
             Int_OLED_ShowString(0, 32, "c_speed:", 16, 1);
-            Int_OLED_ShowNum(83, 32, BLDC_SPEED, 4, 16, 1);
+            Int_OLED_ShowNum(83, 32, bldc_speed, 4, 16, 1);
             break;
         case 1:
             // 展示设备ID页面
