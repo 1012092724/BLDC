@@ -5,9 +5,7 @@
   "srcDirs": [
     "APP",
     "Common",
-    "Interface",
-    "Drivers/STM32F1xx_HAL_Driver/Src",
-    "Core/Src"
+    "Interface"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
@@ -38,6 +36,9 @@
                   },
                   {
                     "path": "Core/Src/gpio.c"
+                  },
+                  {
+                    "path": "Core/Src/can.c"
                   },
                   {
                     "path": "Core/Src/i2c.c"
@@ -72,7 +73,7 @@
                 "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
               },
               {
-                "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c"
+                "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c"
               },
               {
                 "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
@@ -103,6 +104,9 @@
               },
               {
                 "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c"
+              },
+              {
+                "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c"
               },
               {
                 "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
@@ -138,7 +142,7 @@
   "deviceName": null,
   "packDir": null,
   "miscInfo": {
-    "uid": "31d156419dfb05d2fee7b14b7b966c1d"
+    "uid": "463c48ae7b848b40f08f890939521319"
   },
   "targets": {
     "FOC_BLDC": {
@@ -290,7 +294,6 @@
           "Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
           "Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "Drivers/CMSIS/Include",
-          ".cmsis/include",
           "MDK-ARM/RTE/_FOC_BLDC"
         ],
         "libList": [],
@@ -310,7 +313,7 @@
             "output-debug-info": "enable"
           },
           "c/cpp-compiler": {
-            "optimization": "level-1",
+            "optimization": "level-0",
             "one-elf-section-per-function": true,
             "c99-mode": true,
             "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
@@ -319,7 +322,10 @@
           },
           "asm-compiler": {},
           "linker": {
-            "output-format": "elf"
+            "output-format": "elf",
+            "xo-base": "",
+            "ro-base": "",
+            "rw-base": ""
           }
         }
       }

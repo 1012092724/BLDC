@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.md": "markdown",
+        "gpio.h": "c",
+        "can.h": "c"
+    }
+}
